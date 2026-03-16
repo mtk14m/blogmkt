@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17
+    container_name: blogmkt_db
+    restart: always
+    environment:
+      - POSTGRES_USER=blogmkt
+      - POSTGRES_PASSWORD=blogmkt
+      - POSTGRES_DB=blogmkt
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
