@@ -12,5 +12,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  backend:
+    build: ./backend
+    container_name: blogmkt_api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+psycopg://blogmkt:blogmkt@db:5432/blogmkt
+    depends_on:
+      - db
+
 volumes:
   postgres_data:
