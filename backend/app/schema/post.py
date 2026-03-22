@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class PostCreate(BaseModel):
@@ -12,7 +12,9 @@ class PostUpdate(BaseModel):
     content: str | None = None
 
 class PostView(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
     title: str
     slug: str
     content: str | None = None
-
